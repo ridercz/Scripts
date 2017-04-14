@@ -1,0 +1,1 @@
+choco install googlechrome firefox 7zip vlc sysinternals inkscape fiddler4 opera visualstudiocode keepass fsviewer calibre glasswire terminals veracrypt openlivewriter -y
