@@ -32,22 +32,22 @@ echo
 
 # Add firewall settings to NSG
 echo "Adding firewall rules to $NSG_NAME..."
-az network nsg rule create -g $RG_NAME --nsg-name $NSG_NAME --priority 1000 --port Tcp --destination-port-ranges 22 -n SSH
-az network nsg rule create -g $RG_NAME --nsg-name $NSG_NAME --priority 1001 --port Udp --destination-port-ranges 500 -n IPSec_1
-az network nsg rule create -g $RG_NAME --nsg-name $NSG_NAME --priority 1002 --port Udp --destination-port-ranges 1701 -n IPSec_2
-az network nsg rule create -g $RG_NAME --nsg-name $NSG_NAME --priority 1003 --port Udp --destination-port-ranges 4500 -n IPSec_3
-az network nsg rule create -g $RG_NAME --nsg-name $NSG_NAME --priority 1004 --port Tcp --destination-port-ranges 443 -n HTTPS
-az network nsg rule create -g $RG_NAME --nsg-name $NSG_NAME --priority 1005 --port Tcp --destination-port-ranges 80 -n HTTP
-az network nsg rule create -g $RG_NAME --nsg-name $NSG_NAME --priority 1006 --port Tcp --destination-port-ranges 4443 -n OpenConnect_TCP
-az network nsg rule create -g $RG_NAME --nsg-name $NSG_NAME --priority 1007 --port Udp --destination-port-ranges 4443 -n OpenConnect_UDP
-az network nsg rule create -g $RG_NAME --nsg-name $NSG_NAME --priority 1008 --port Tcp --destination-port-ranges 636 -n OpenVPN_TCP
-az network nsg rule create -g $RG_NAME --nsg-name $NSG_NAME --priority 1009 --port Udp --destination-port-ranges 8757 -n OpenVPN_UDP
-az network nsg rule create -g $RG_NAME --nsg-name $NSG_NAME --priority 1010 --port Tcp --destination-port-ranges 993 -n Stunnel
-az network nsg rule create -g $RG_NAME --nsg-name $NSG_NAME --priority 1011 --port Tcp --destination-port-ranges 8530 -n ShadowSocks_TCP
-az network nsg rule create -g $RG_NAME --nsg-name $NSG_NAME --priority 1012 --port Udp --destination-port-ranges 8530 -n ShadowSocks_UDP
-az network nsg rule create -g $RG_NAME --nsg-name $NSG_NAME --priority 1013 --port Tcp --destination-port-ranges 8443 -n Tor_bridge
-az network nsg rule create -g $RG_NAME --nsg-name $NSG_NAME --priority 1014 --port Tcp --destination-port-ranges 9443 -n Tor_obfs4
-az network nsg rule create -g $RG_NAME --nsg-name $NSG_NAME --priority 1015 --port Udp --destination-port-ranges 51820 -n WireGuard
+az network nsg rule create -g $RG_NAME --nsg-name $NSG_NAME --priority 1000 --protocol Tcp --destination-port-ranges 22 -n SSH
+az network nsg rule create -g $RG_NAME --nsg-name $NSG_NAME --priority 1001 --protocol Udp --destination-port-ranges 500 -n IPSec_1
+az network nsg rule create -g $RG_NAME --nsg-name $NSG_NAME --priority 1002 --protocol Udp --destination-port-ranges 1701 -n IPSec_2
+az network nsg rule create -g $RG_NAME --nsg-name $NSG_NAME --priority 1003 --protocol Udp --destination-port-ranges 4500 -n IPSec_3
+az network nsg rule create -g $RG_NAME --nsg-name $NSG_NAME --priority 1004 --protocol Tcp --destination-port-ranges 443 -n HTTPS
+az network nsg rule create -g $RG_NAME --nsg-name $NSG_NAME --priority 1005 --protocol Tcp --destination-port-ranges 80 -n HTTP
+az network nsg rule create -g $RG_NAME --nsg-name $NSG_NAME --priority 1006 --protocol Tcp --destination-port-ranges 4443 -n OpenConnect_TCP
+az network nsg rule create -g $RG_NAME --nsg-name $NSG_NAME --priority 1007 --protocol Udp --destination-port-ranges 4443 -n OpenConnect_UDP
+az network nsg rule create -g $RG_NAME --nsg-name $NSG_NAME --priority 1008 --protocol Tcp --destination-port-ranges 636 -n OpenVPN_TCP
+az network nsg rule create -g $RG_NAME --nsg-name $NSG_NAME --priority 1009 --protocol Udp --destination-port-ranges 8757 -n OpenVPN_UDP
+az network nsg rule create -g $RG_NAME --nsg-name $NSG_NAME --priority 1010 --protocol Tcp --destination-port-ranges 993 -n Stunnel
+az network nsg rule create -g $RG_NAME --nsg-name $NSG_NAME --priority 1011 --protocol Tcp --destination-port-ranges 8530 -n ShadowSocks_TCP
+az network nsg rule create -g $RG_NAME --nsg-name $NSG_NAME --priority 1012 --protocol Udp --destination-port-ranges 8530 -n ShadowSocks_UDP
+az network nsg rule create -g $RG_NAME --nsg-name $NSG_NAME --priority 1013 --protocol Tcp --destination-port-ranges 8443 -n Tor_bridge
+az network nsg rule create -g $RG_NAME --nsg-name $NSG_NAME --priority 1014 --protocol Tcp --destination-port-ranges 9443 -n Tor_obfs4
+az network nsg rule create -g $RG_NAME --nsg-name $NSG_NAME --priority 1015 --protocol Udp --destination-port-ranges 51820 -n WireGuard
 echo
 
 # Create VM
