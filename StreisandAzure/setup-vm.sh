@@ -19,7 +19,7 @@ echo "  VM SSH Key:             $VM_SSH_KEY"
 
 # Get confirmation from user
 read -p "Are you sure you want to continue? (y/N) " yesno
-if [ "$prompt" != "y" ]; then exit; fi
+if [ "$yesno" != "y" ]; then exit; fi
 echo
 
 echo "Creating Azure Resource Group $RG_NAME..."
