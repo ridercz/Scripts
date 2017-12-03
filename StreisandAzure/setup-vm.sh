@@ -53,4 +53,16 @@ echo
 # Create VM
 echo "Creating VM..."
 az vm create -n $VM_NAME -g $RG_NAME --image UbuntuLTS --size $VM_SIZE --nsg $NSG_NAME -l $REGION --ssh-key-value $VM_SSH_KEY
-echo
+
+# Migrate to standard tier (cheaper)
+echo "Migrating disk to cheaper Standard tier..."
+vmId=$(az vm show -g $RG_NAME -n $VM_NAME --query id -o tsv)
+diskName=$(az vm show -g $RG_NAME -n $VM_NAME --query storageProfile.osDisk.name -o tsv)
+az vm deallocate --ids $vmId
+az disk update --sku Standard_LRS --name $diskName --resource-group $RG_NAME
+az vm start --ids $vmId 
+
+# Show available VMS
+echo "Done, the following VMs are available in the $RG_NAME resource group:"
+az vm list -g Streisand -d --query "sort_by([].{Name:name,IP:publicIps,Location:location,Size:hardwareProfile.vmSize,Provisioning:provisioningState,State:powerState},&Name)" -o table
+echo 
