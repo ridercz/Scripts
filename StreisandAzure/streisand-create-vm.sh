@@ -22,6 +22,9 @@ read -p "Are you sure you want to continue? (y/N) " yesno
 if [ "$yesno" != "y" ]; then exit; fi
 echo
 
+# Record start time
+START_TIME=$(date +%s)
+
 echo "Creating Azure Resource Group $RG_NAME..."
 az group create -n $RG_NAME -l $REGION
 echo 
@@ -65,4 +68,9 @@ az vm start --ids $vmId
 # Show available VMS
 echo "Done, the following VMs are available in the $RG_NAME resource group:"
 az vm list -g Streisand -d --query "sort_by([].{Name:name,IP:publicIps,Location:location,Size:hardwareProfile.vmSize,Provisioning:provisioningState,State:powerState},&Name)" -o table
-echo 
+
+# Display time taken
+END_TIME=$(date +%s)
+DELTA=$(expr $END_TIME - $START_TIME)
+echo "It took $(expr $DELTA / 60) min, $(expr $DELTA % 60) sec."
+echo
