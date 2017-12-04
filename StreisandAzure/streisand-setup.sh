@@ -1,3 +1,5 @@
+#!/bin/sh
+
 # Record start time
 START_TIME=$(date +%s)
 
