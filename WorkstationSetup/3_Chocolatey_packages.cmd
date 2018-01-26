@@ -1,1 +1,1 @@
-choco install googlechrome firefox 7zip vlc sysinternals inkscape fiddler4 opera visualstudiocode keepass fsviewer calibre terminals veracrypt openlivewriter hexchat sdformatter openvpn imgburn -y
+choco install googlechrome firefox 7zip vlc sysinternals opera visualstudiocode keepass fsviewer calibre terminals veracrypt openlivewriter hexchat sdformatter openvpn imgburn -y
