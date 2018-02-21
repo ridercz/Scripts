@@ -69,7 +69,7 @@ echo
 
 # Show available VMS
 echo "Done, the following VMs are available in the $RG_NAME resource group:"
-az vm list -g Streisand -d --query "sort_by([].{Name:name,IP:publicIps,Location:location,Size:hardwareProfile.vmSize,Provisioning:provisioningState,State:powerState},&Name)" -o table
+az vm list -g $RG_NAME -d --query "sort_by([].{Name:name,IP:publicIps,Location:location,Size:hardwareProfile.vmSize,Provisioning:provisioningState,State:powerState},&Name)" -o table
 echo 
 
 # Display time taken
