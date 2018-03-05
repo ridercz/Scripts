@@ -1,17 +1,26 @@
 #!/bin/sh
 
+# Check if running as root
+if ! [ $(id -u) = 0 ]; then
+   echo "Not running as root. Please run 'sudo ./streisand-setup.sh'."
+   exit 1
+fi
+
 # Record start time
 START_TIME=$(date +%s)
 
 # Update system
+echo "Updating system..."
 apt-get update
 apt-get upgrade -y
 apt-get install -y git python-paramiko python-pip python-pycurl python-dev build-essential
 
 # Instal Ansible prerequisites
+echo "Installing Python libraries"
 pip install ansible markupsafe
 
 # Get Streisand
+echo "Cloning Streisand..."
 git clone https://github.com/jlund/streisand.git
 cd streisand
 
