@@ -34,7 +34,7 @@ ECHO Installing Chocolatey...
 powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
 
 REM -- Install WPI and other server packages via Chocolatey
-choco install 7zip sysinternals webpi webpicmd -y
+choco install 7zip sysinternals webpi webpicmd iiscrypto-cli -y
 
 REM -- Install IIS components via WPI 
 %WEBPICMD% /Install /AcceptEula /Products:"IIS7,ARRv3_0,ASPNET45,NetFxExtensibility45"
@@ -52,3 +52,17 @@ MKDIR %ROOT_FOLDER%
 REM -- Copy scripts to web root folder
 COPY newcust.cmd %ROOT_FOLDER%\newcust.cmd
 COPY newsite.cmd %ROOT_FOLDER%\newsite.cmd
+
+REM -- Fix SChannel settings in Azure template incompatible with IIS Crypto tool
+ECHO Fixing SChannel settings in Azure template incompatible with IIS Crypto tool...
+REG DELETE "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Ciphers\RC4 128/128" /f
+REG DELETE "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Ciphers\RC4 40/128" /f
+REG DELETE "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Ciphers\RC4 56/128" /f
+REG DELETE "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\SSL 3.0\Client" /f
+REG DELETE "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\SSL 3.0\Server" /f
+
+REM -- Configure SChannel best practices settings 
+ECHO Applying IIS Crypto best practices template...
+iiscryptocli /template best
+
+ECHO Done. Please reboot server to apply settings.
