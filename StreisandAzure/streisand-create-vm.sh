@@ -2,12 +2,13 @@
 
 # Setup options
 if [ -z "$REGION" ]; then REGION=WestEurope; fi
-if [ -z "$RG_NAME" ]; then RG_NAME=Streisand; fi
+if [ -z "$RG_NAME" ]; then RG_NAME=Streisand-$REGION; fi
 if [ -z "$NSG_NAME" ]; then NSG_NAME=StreisandNSG-$REGION; fi
 if [ -z "$VM_NAME" ]; then VM_NAME=Streisand-$REGION; fi
 if [ -z "$VM_SIZE"]; then VM_SIZE=Standard_B1s; fi
 if [ -z "$VM_SSH_KEY"]; then VM_SSH_KEY=~/.ssh/id_rsa.pub; fi
 if [ -z "$LOGFILE"]; then LOGFILE=streisand-create-vm-$(date -u +%Y%m%d-%H%M%S).log; fi
+if [ -z "$OS_IMAGE"]; then OS_IMAGE=UbuntuLTS; fi
 
 # Display configured options
 echo "Configured options for a Streisand VM:"
@@ -56,7 +57,7 @@ echo "  WireGuard...";          az network nsg rule create -g $RG_NAME --nsg-nam
 
 # Create VM
 echo "Creating VM..."
-az vm create -n $VM_NAME -g $RG_NAME --image UbuntuLTS --size $VM_SIZE --nsg $NSG_NAME -l $REGION --ssh-key-value $VM_SSH_KEY >> $LOGFILE
+az vm create -n $VM_NAME -g $RG_NAME --image $OS_IMAGE --size $VM_SIZE --nsg $NSG_NAME -l $REGION --ssh-key-value $VM_SSH_KEY >> $LOGFILE
 
 # Migrate to standard tier (cheaper)
 echo "Migrating disk to cheaper Standard tier:"
