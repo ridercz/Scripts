@@ -40,6 +40,9 @@ REM -- Install IIS components via WPI
 %WEBPICMD% /Install /AcceptEula /Products:"IIS7,ARRv3_0,ASPNET45,NetFxExtensibility45"
 %WEBPICMD% /Install /AcceptEula /Products:"FTPServer,IISManagementScriptsAndTools,ManagementService,UrlRewrite2,WDeploy36,WDeploy_2_1,AppWarmUp,BasicAuthentication,CertProvider,CustomLogging,DynamicContentCompression,FTPExtensibility,HTTPRedirection,IPSecurity,Tracing,URLAuthorization"
 
+REM -- Enable Web Management Service
+SC config wmsvc start=auto
+
 REM -- Use AP identity as anonymous request identity
 %APPCMD% set config -section:system.webServer/security/authentication/anonymousAuthentication /userName:"" /commit:apphost
 
@@ -65,4 +68,6 @@ REM -- Configure SChannel best practices settings
 ECHO Applying IIS Crypto best practices template...
 iiscryptocli /template best
 
-ECHO Done. Please reboot server to apply settings.
+ECHO Done. Your server will be rebooted to apply settings.
+PAUSE
+SHUTDOWN /r /t 0 /d p:4:2
