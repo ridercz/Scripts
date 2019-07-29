@@ -108,3 +108,5 @@ Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer
 # Uninstall Work Folders Client
 dism /online /Disable-Feature /FeatureName:WorkFolders-Client /Quiet /NoRestart
 
+# Disable blur on logon screen
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System" -Name "DisableAcrylicBackgroundOnLogon" -Type DWord -Value 1
