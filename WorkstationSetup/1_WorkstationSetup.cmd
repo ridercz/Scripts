@@ -1,0 +1,1 @@
+@powershell -ExecutionPolicy Unrestricted -File WorkstationSetup.ps1
