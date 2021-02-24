@@ -1,2 +1,5 @@
 # Log files
 *.log
+
+# OpenSSL binaries
+CA/bin/
