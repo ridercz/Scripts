@@ -2,16 +2,11 @@
 
 REM --------------------------------------------------------------------------
 REM -- Altair's IIS Setup Script: Phase 1
+REM -- This will configure operating system and install required software.
 REM --------------------------------------------------------------------------
-REM -- This will configure operating system and install required software 
-REM -- using Chocolatey and Web Platform Installer.
-REM --------------------------------------------------------------------------
-REM -- (c) Michal A. Valasek - Altairis, 2008-2020
+REM -- (c) Michal A. Valasek - Altairis, 2008-2021
 REM -- www.rider.cz - www.altairis.cz - github.com/ridercz/Scripts
 REM --------------------------------------------------------------------------
-
-REM -- Set path to Web Platform Installer application
-SET WEBPICMD="C:\Program Files\Microsoft\Web Platform Installer\WebpiCmd-x64.exe"
 
 REM -- Disable IE ESC
 ECHO Disabling IE ESC...
@@ -38,14 +33,34 @@ REM -- Enable unsigned PowerShell scripts
 ECHO Enabling unsigned PowerShell scripts...
 powershell Set-ExecutionPolicy RemoteSigned
 
+REM -- Install standard IIS components
+ECHO Installing web server...
+powershell Install-WindowsFeature -name Web-Server -IncludeManagementTools
+ECHO Installing common web server features...
+powershell Enable-WindowsOptionalFeature -Online -FeatureName IIS-RequestMonitor,IIS-HttpTracing,IIS-IPSecurity,IIS-HttpCompressionDynamic
+ECHO Installing ASP.NET...
+powershell Enable-WindowsOptionalFeature -Online -FeatureName NetFx4Extended-ASPNET45,IIS-ApplicationDevelopment,IIS-ApplicationInit,IIS-ISAPIExtensions,IIS-ISAPIFilter,IIS-NetFxExtensibility45,IIS-ASPNET45,IIS-WebSockets
+ECHO Installing management tools...
+powershell Enable-WindowsOptionalFeature -Online -FeatureName IIS-ManagementScriptingTools,IIS-ManagementService
+ECHO Installing FTP server...
+powershell Enable-WindowsOptionalFeature -Online -FeatureName IIS-FTPServer,IIS-FTPSvc
+ECHO Installing Centralized Certificate Store...
+powershell Enable-WindowsOptionalFeature -Online -FeatureName IIS-CertProvider
+
 REM -- Install Chocolatey
 ECHO Installing Chocolatey...
 powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
 
-REM -- Install WPI and other server packages via Chocolatey
-choco install 7zip sysinternals webpi webpicmd iiscrypto-cli altap-salamander -y
+REM -- Install server packages via Chocolatey
+choco install 7zip sysinternals iiscrypto-cli altap-salamander iis-arr -y
 
-REM -- Install IIS components via WPI 
-%WEBPICMD% /Install /AcceptEula /Products:"IIS7,ARRv3_0,ASPNET45,NetFxExtensibility45,FTPServer,IISManagementScriptsAndTools,ManagementService,UrlRewrite2,WDeploy36,WDeploy_2_1,AppWarmUp,BasicAuthentication,CertProvider,CustomLogging,DynamicContentCompression,FTPExtensibility,HTTPRedirection,IPSecurity,Tracing,URLAuthorization"
+REM -- Install IIS Web Deploy (manually, because Chocolatey package for it is broken ATM)
+ECHO Installing IIS Web Deploy...
+powershell Invoke-WebRequest "https://download.microsoft.com/download/0/1/D/01DC28EA-638C-4A22-A57B-4CEF97755C6C/WebDeploy_amd64_en-US.msi" -OutFile webdeploy.msi
+msiexec /i webdeploy.msi /passive /norestart ADDLOCAL=all
 
 REM -- Reboot computer after completing phase 1
+ECHO.
+ECHO Phase 1 Done. Your server will be rebooted to apply settings.
+PAUSE
+SHUTDOWN /r /t 0 /d p:4:2

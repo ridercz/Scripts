@@ -2,9 +2,9 @@
 
 REM --------------------------------------------------------------------------
 REM -- Altair's IIS Setup Script: Phase 2
+REM -- This will setup IIS after installation of required components.
 REM --------------------------------------------------------------------------
-REM -- This will setup IIS after all is installed using the WebPI-CMD
-REM -- (c) Michal A. Valasek - Altairis, 2008-2020
+REM -- (c) Michal A. Valasek - Altairis, 2008-2021
 REM -- www.rider.cz - www.altairis.cz - github.com/ridercz/Scripts
 REM --------------------------------------------------------------------------
 
@@ -13,6 +13,9 @@ SET ROOT_FOLDER=D:\WWW-servers\LocalUser
 
 REM -- Set path to appcmd utility
 SET APPCMD=%SYSTEMROOT%\System32\inetsrv\appcmd.exe
+
+REM -- Delete webdeploy.msi downloaded by phase 1
+DEL webdeploy.msi
 
 REM -- Enable Web Management Service and remote access
 SC config wmsvc start=auto
@@ -43,6 +46,8 @@ REM -- Configure SChannel best practices settings
 ECHO Applying IIS Crypto best practices template...
 iiscryptocli /template best
 
-ECHO Done. Your server will be rebooted to apply settings.
+REM -- Reboot computer after completing phase 2
+ECHO.
+ECHO Phase 2 Done. Your server will be rebooted to apply settings.
 PAUSE
 SHUTDOWN /r /t 0 /d p:4:2
