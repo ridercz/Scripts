@@ -6,7 +6,7 @@ RG_NAME=Test-$SUFFIX
 NSG_NAME=Test-$SUFFIX-NSG
 REGION=EastUS
 SIZE=Standard_B2ms
-IMAGE=win2019datacenter
+IMAGE=win2022datacenter
 VM_NAME=test$SUFFIX
 USER_NAME=Developer
 USER_PASS=$(openssl rand -base64 18 | sed "s|[+/]|x|g")
@@ -54,6 +54,7 @@ az vm create -n $VM_NAME -g $RG_NAME \
              --admin-username $USER_NAME --admin-password $USER_PASS \
              --image $IMAGE --size $SIZE \
              --nsg $NSG_NAME -l $REGION \
+             --public-ip-sku Standard \
              --public-ip-address-dns-name $VM_NAME
 
 # Display results
