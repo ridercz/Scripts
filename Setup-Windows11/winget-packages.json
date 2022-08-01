@@ -58,7 +58,7 @@
 					"PackageIdentifier" : "LightburnSoftware.Lightburn"
 				},
 				{
-					"PackageIdentifier" : "ShiningLight.OpenSSL.Light"
+					"PackageIdentifier" : "OpenSCAD.OpenSCAD"
 				},
 				{
 					"PackageIdentifier" : "Opera.Opera"
