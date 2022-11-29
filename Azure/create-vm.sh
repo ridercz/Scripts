@@ -9,7 +9,7 @@ SIZE=Standard_B2ms
 IMAGE=win2022datacenter
 VM_NAME=test$SUFFIX
 USER_NAME=Developer
-USER_PASS=$(openssl rand -base64 18 | sed "s|[+/]|x|g")
+USER_PASS=Pw1-$(openssl rand -base64 18 | sed "s|[+/]|x|g")
 
 # Display intentions and ask user if they want to proceed
 echo "This will create the following Windows VM:"

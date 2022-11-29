@@ -8,7 +8,7 @@ PLAN_SKU=B1
 APPSERVICE_NAME=Test$SUFFIX
 SQL_SERVER=test$SUFFIX
 SQL_USER=test$SUFFIX
-SQL_PASSWORD=$(openssl rand -base64 18 | sed "s|[+/]|x|g")
+SQL_PASSWORD=Pw1-$(openssl rand -base64 18 | sed "s|[+/]|x|g")
 SQL_DB=test$SUFFIX
 
 # Display intentions and ask user if they want to proceed
