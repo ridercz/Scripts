@@ -52,10 +52,13 @@
 					"PackageIdentifier" : "LIGHTNINGUK.ImgBurn"
 				},
 				{
-					"PackageIdentifier" : "DominikReichl.KeePass"
+					"PackageIdentifier" : "KeePassXCTeam.KeePassXC"
 				},
 				{
 					"PackageIdentifier" : "LightburnSoftware.Lightburn"
+				},
+				{
+					"PackageIdentifier": "Mozilla.Firefox"
 				},
 				{
 					"PackageIdentifier" : "OpenSCAD.OpenSCAD"
@@ -70,9 +73,6 @@
 					"PackageIdentifier" : "RaspberryPiFoundation.RaspberryPiImager"
 				},
 				{
-					"PackageIdentifier" : "Resilio.ResilioSync"
-				},
-				{
 					"PackageIdentifier" : "tailscale.tailscale"
 				},
 				{
@@ -80,9 +80,6 @@
 				},
 				{
 					"PackageIdentifier" : "VideoLAN.VLC"
-				},
-				{
-					"PackageIdentifier" : "IDRIX.VeraCrypt"
 				},
 				{
 					"PackageIdentifier" : "Radionomy.Winamp"
@@ -106,10 +103,9 @@
 					"PackageIdentifier" : "Microsoft.VisualStudioCode"
 				},
 				{
-					"PackageIdentifier" : "Terminals.Terminals"
-				},
-				{
 					"PackageIdentifier" : "Microsoft.PowerToys"
+				}, {
+					"PackageIdentifier": "Terminals.Terminals"
 				}
 			],
 			"SourceDetails" : 
@@ -118,21 +114,6 @@
 				"Identifier" : "Microsoft.Winget.Source_8wekyb3d8bbwe",
 				"Name" : "winget",
 				"Type" : "Microsoft.PreIndexed.Package"
-			}
-		},
-		{
-			"Packages" : 
-			[
-				{
-					"PackageIdentifier" : "9P7KNL5RWT25"
-				}
-			],
-			"SourceDetails" : 
-			{
-				"Argument" : "https://storeedgefd.dsx.mp.microsoft.com/v9.0",
-				"Identifier" : "StoreEdgeFD",
-				"Name" : "msstore",
-				"Type" : "Microsoft.Rest"
 			}
 		}
 	],
