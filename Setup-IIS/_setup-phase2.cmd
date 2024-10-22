@@ -4,7 +4,7 @@ REM --------------------------------------------------------------------------
 REM -- Altair's IIS Setup Script: Phase 2
 REM -- This will setup IIS after installation of required components.
 REM --------------------------------------------------------------------------
-REM -- (c) Michal A. Valasek - Altairis, 2008-2021
+REM -- (c) Michal A. Valasek - Altairis, 2008-2024
 REM -- www.rider.cz - www.altairis.cz - github.com/ridercz/Scripts
 REM --------------------------------------------------------------------------
 
@@ -33,14 +33,6 @@ MKDIR %ROOT_FOLDER%
 REM -- Copy scripts to web root folder
 COPY newcust.cmd %ROOT_FOLDER%\newcust.cmd
 COPY newsite.cmd %ROOT_FOLDER%\newsite.cmd
-
-REM -- Fix SChannel settings in Azure template incompatible with IIS Crypto tool
-ECHO Fixing SChannel settings in Azure template incompatible with IIS Crypto tool...
-REG DELETE "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Ciphers\RC4 128/128" /f
-REG DELETE "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Ciphers\RC4 40/128" /f
-REG DELETE "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Ciphers\RC4 56/128" /f
-REG DELETE "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\SSL 3.0\Client" /f
-REG DELETE "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\SSL 3.0\Server" /f
 
 REM -- Configure SChannel best practices settings 
 ECHO Applying IIS Crypto best practices template...
