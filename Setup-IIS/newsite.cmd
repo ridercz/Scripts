@@ -1,14 +1,14 @@
 @ECHO OFF
 
 REM -- Configuration
-SET ROOT_FOLDER=D:\WWW-servers\LocalUser
+SET ROOT_FOLDER=C:\WWW-servers\LocalUser
 SET APPCMD=%SYSTEMROOT%\System32\inetsrv\appcmd.exe
 SET AUTOACME=C:\CertStore\AutoACME\autoacme.exe
 SET AASYNC=C:\CertStore\AutoACME\aasync.exe
 
 REM -- Banner
 ECHO Create new site script
-ECHO Copyright (c) Michal A. Valasek - Altairis, 2010-2017
+ECHO Copyright (c) Michal A. Valasek - Altairis, 2010-2025
 ECHO.
 
 REM -- Validate

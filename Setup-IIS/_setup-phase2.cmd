@@ -4,12 +4,12 @@ REM --------------------------------------------------------------------------
 REM -- Altair's IIS Setup Script: Phase 2
 REM -- This will setup IIS after installation of required components.
 REM --------------------------------------------------------------------------
-REM -- (c) Michal A. Valasek - Altairis, 2008-2024
+REM -- (c) Michal A. Valasek - Altairis, 2008-2025
 REM -- www.rider.cz - www.altairis.cz - github.com/ridercz/Scripts
 REM --------------------------------------------------------------------------
 
 REM -- Set root folder for web hosting sites
-SET ROOT_FOLDER=D:\WWW-servers\LocalUser
+SET ROOT_FOLDER=C:\WWW-servers\LocalUser
 
 REM -- Set path to appcmd utility
 SET APPCMD=%SYSTEMROOT%\System32\inetsrv\appcmd.exe

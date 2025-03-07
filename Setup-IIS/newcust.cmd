@@ -1,7 +1,7 @@
 @ECHO OFF
 
 REM -- Configuration
-SET ROOT_FOLDER=D:\WWW-servers\LocalUser
+SET ROOT_FOLDER=C:\WWW-servers\LocalUser
 SET APPCMD=%SYSTEMROOT%\System32\inetsrv\appcmd.exe
 SET AUTOACME=C:\CertStore\AutoACME\autoacme.exe
 SET AASYNC=C:\CertStore\AutoACME\aasync.exe
@@ -9,7 +9,7 @@ SET FTP_GROUP_NAME=Customers
 
 REM -- Banner
 ECHO Create new customer script
-ECHO Copyright (c) Michal A. Valasek - Altairis, 2009-2017
+ECHO Copyright (c) Michal A. Valasek - Altairis, 2009-2025
 ECHO.
 
 REM -- Validate
