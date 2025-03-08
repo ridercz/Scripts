@@ -2,6 +2,11 @@
 
 This script solves one problem with the Express Edition of Microsoft SQL Server: lack of automated backup solution. It will perform backup of all user databases to local folder and optionally to Azure Blob Storage.
 
+## Video instructions (Czech language only)
+
+[![](https://img.youtube.com/vi/E6Wto3UBrm0/maxresdefault.jpg)](https://www.youtube.com/watch?v=E6Wto3UBrm0)
+
+
 ## How to use
 
 ### Installation
