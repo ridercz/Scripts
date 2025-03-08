@@ -11,7 +11,7 @@ SET BackupFilePath=C:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER\MSS
 
 REM -- Call SQLCMD with parameters needed to connect to SQL Server
 ECHO Backing up all databases...
-sqlcmd -S . -E -i %~dp0\ExpressBackup.sql -o "%BackupFilePath%\ExpressBackup.log"
+sqlcmd -S .\SqlExpress -E -i %~dp0\ExpressBackup.sql -o "%BackupFilePath%\ExpressBackup.log"
 
 REM -- Delete all backup files older than 7 days
 ECHO Deleting backups older than 7 days...
