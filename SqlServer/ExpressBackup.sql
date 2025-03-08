@@ -8,7 +8,7 @@
 
 -- Create Azure credential for backup (run manually and only once, with your credentials)
 /*
-CREATE CREDENTIAL AzureStorage WITH 
+CREATE CREDENTIAL ExpressBackup WITH 
     IDENTITY = 'expressbackuptest',
     SECRET = 'K+/CRAgwSKS+rUppSMg1P5YXVxSDZK12D8mCAzvn63R46E/YBBfQJ9bLJ3RVvy1YGWGDemZpCoYz+AStYu2ShA=='
 */

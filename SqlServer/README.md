@@ -15,7 +15,7 @@ Save the files [`ExpressBackup.sql`](ExpressBackup.sql) and [`ExpressBackup.cmd`
 1. Define named credential in SQL Server. You do this only once. Run the following TSQL command, replacing `IDENTITY` and `SECRET` with your storage account name and access key:
 
 ```sql
-CREATE CREDENTIAL AzureStorage WITH 
+CREATE CREDENTIAL ExpressBackup WITH 
     IDENTITY = 'expressbackuptest',
     SECRET = 'K+/CRAgwSKS+rUppSMg1P5YXVxSDZK12D8mCAzvn63R46E/YBBfQJ9bLJ3RVvy1YGWGDemZpCoYz+AStYu2ShA=='
 ```
