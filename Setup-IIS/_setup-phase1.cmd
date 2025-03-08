@@ -37,19 +37,8 @@ powershell Install-WindowsFeature -name Web-Ftp-Server
 powershell Install-WindowsFeature -name Web-Scripting-Tools    
 powershell Install-WindowsFeature -name Web-Mgmt-Service       
 
-REM -- Install Chocolatey
-ECHO Installing Chocolatey...
-powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
-
-REM -- Install server packages via Chocolatey
-choco install 7zip sysinternals iiscrypto-cli altap-salamander iis-arr dotnet-8.0-windowshosting -y
-REM -- Install .NET 9.0 hosting package (ignore dependencies, because they are already installed and the package is not aware of it)
-choco install dotnet-9.0-windowshosting -y --ignore-dependencies
-
-REM -- Install IIS Web Deploy 4.0 (manually, because Chocolatey package for it does not exist)
-ECHO Installing IIS Web Deploy...
-powershell Invoke-WebRequest "https://download.microsoft.com/download/b/d/8/bd882ec4-12e0-481a-9b32-0fae8e3c0b78/webdeploy_amd64_en-US.msi" -OutFile webdeploy.msi
-msiexec /i webdeploy.msi /passive /norestart ADDLOCAL=all
+REM -- Install server packages via WinGet
+winget install 7zip.7zip Altap.Salamander Microsoft.WebDeploy Microsoft.Sysinternals Microsoft.DotNet.HostingBundle.8 Microsoft.DotNet.HostingBundle.9 NartacSoftwareInc.IISCryptoCLI
 
 REM -- Reboot computer after completing phase 1
 ECHO.
