@@ -6,7 +6,8 @@
 ** When running from SQL Management Studio, enable Query -> SQLCMD mode      **
 ******************************************************************************/
 
--- Create Azure credential for backup (run manually and only once, with your credentials)
+-- Create Azure credential for backup (run manually and only once)
+-- These are demo credentials that no longer work, you have to replace them with your own storage account.
 /*
 CREATE CREDENTIAL ExpressBackup WITH 
     IDENTITY = 'expressbackuptest',

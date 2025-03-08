@@ -20,6 +20,8 @@ CREATE CREDENTIAL ExpressBackup WITH
     SECRET = 'K+/CRAgwSKS+rUppSMg1P5YXVxSDZK12D8mCAzvn63R46E/YBBfQJ9bLJ3RVvy1YGWGDemZpCoYz+AStYu2ShA=='
 ```
 
+> These are demo credentials that no longer work, you have to replace them with your own storage account.
+
 ### Run backup manually
 
 1. Open the [`ExpressBackup.sql`](ExpressBackup.sql) file in SQL Server Management Studio.
