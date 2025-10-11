@@ -1,38 +1,38 @@
-# Install Windows 11 without Microsoft Account
+# Install Windows 11 without a Microsoft account.
 
-> **I wholeheartedly recommend using Microsoft Account! Most reasons people use for avoiding ones are nonsensical.**
+> **I wholeheartedly recommend using a Microsoft account! The reasons most people give for avoiding them are nonsensical.**
 >
-> The main reason why I created this guide is that the default user name created during standard setup cannot be set via UI and is fixed to first five characters of e-mail address. Also this is not practical for testing and demo purposes. It is no problem for most home users, but for advanced users like me it is a problem.
+> The main reason I created this guide is that the username created during standard setup cannot be set via the UI and is fixed to the first five characters of the email address. This is also not practical for testing and demo purposes. This is not a problem for most home users, but it is for advanced users like me.
 
 ## How to
 
-To install Windows 11 without mandatory Microsoft Account, do the following:
+To install Windows 11 without a Microsoft account, follow these steps:
 
-1. Boot from installation media and go trough the first part of setup (the oldschool looking like Windows 7).
-2. After reboot, wait until it will show the OOBE (Out Of Box Experience, the modern looking interface, asking for country selection).
-3. Press `Shift + F10`.
+1. Boot from the installation media and complete the initial setup process (it looks like Windows 7).
+2. After rebooting, wait until the OOBE (Out of Box Experience) interface appears. This is the modern-looking interface that asks you to select your country.
+3. Press _Shift + F10_.
 4. Enter the following two commands:
 ```
 curl -L -o bypass.cmd https://altair.is/win11-oobe
 bypass.cmd
 ```
-5. The computer will reboot and the setup will continue as usual. You would not be asked to use Microsoft Account, but will be asked for local account name and optional password instead. No other aspect of setup will be changed.
+5. The computer will reboot and setup will continue as usual. You will not be asked to use a Microsoft account, but will instead be asked for a local account name and optional password. No other aspect of the setup will be changed.
 
 ## Will it work?
 
-It should. While the older methods Microsoft removes access to are undocumented hacks, the `unattend.xml` answer file is officially documented and crucial for many real world scenarios. As it will break many deployments, it's highly unlikely to be removed or changed.
+It should. While the older methods that Microsoft is removing access to are undocumented hacks, the 'unattend.xml' answer file is officially documented and crucial for many real-world scenarios. As breaking it would affect many deployments, it's highly unlikely to be removed or changed.
 
 ## Can I trust you?
 
-No. You should not trust strangers, and especially not weird sociopathic warlocks of the silicon gods like me. Running random scripts from the Internet during critical part of operating system setup is a _very bad idea_ that can lead to entire system compromise.
+No, you shouldn't trust strangers, especially not weird, sociopathic warlocks of the silicon god like me. Running random scripts from the Internet during the critical phase of setup of an operating system is a very bad idea that can lead to the entire system being compromised.
 
-What you should do instead?
+You should:
 
-1. Verify that the `https://altair.is/win11-oobe` shortlink is leading to file `bypass.cmd` here.
-2. Verify content of the file.
-3. Verify content of `unattend.xml` it downloads.
+1. Verify that the shortlink https://altair.is/win11-oobe leads to the file `bypass.cmd` here.
+2. Verify the content of the file.
+3. Verify the content of the 'unattend.xml' file that it downloads.
 
-But now, I can't force you to do that, can I? But if you would not do it, you should be whipped! Yeah, I'm into BDSM as well...
+But I can't force you to do it, can I? If you don't do it, though, you should be whipped! Yes, I'm into BDSM as well. Do you still trust me?
 
 ## Additional resources
 
