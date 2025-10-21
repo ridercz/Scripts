@@ -25,7 +25,7 @@ Mělo by. Zatímco starší metody, ke kterým Microsoft omezuje přístup, jsou
 
 ## Můžu ti věřit?
 
-Ne, neměli byste věřit cizím lidem, zejména ne podivným sociopatickým warlockům silikonového boha, jako jsem já. Spouštění náhodných skriptů z Internetu během kritické fáze nastavení operačního systému je velmi špatný nápad, který může vést k ohrožení celého systému.
+Ne, neměli byste věřit cizím lidem, zejména ne podivným sociopatickým warlockům křemíkového boha, jako jsem já. Spouštění náhodných skriptů z Internetu během kritické fáze nastavení operačního systému je velmi špatný nápad, který může vést k ohrožení celého systému.
 
 Měli byste:
 
