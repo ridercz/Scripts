@@ -11,12 +11,13 @@ To install Windows 11 without a Microsoft account, follow these steps:
 1. Boot from the installation media and complete the initial setup process (it looks like Windows 7).
 2. After rebooting, wait until the OOBE (Out of Box Experience) interface appears. This is the modern-looking interface that asks you to select your country.
 3. Press _Shift + F10_.
-4. Enter the following two commands:
+4. Command prompt window will open.
+5. Run the following two commands:
 ```
 curl -L -o bypass.cmd https://altair.is/win11-oobe
 bypass.cmd
 ```
-5. The computer will reboot and setup will continue as usual. You will not be asked to use a Microsoft account, but will instead be asked for a local account name and optional password. No other aspect of the setup will be changed.
+6. The computer will reboot and setup will continue as usual. You will not be asked to use a Microsoft account, but will instead be asked for a local account name and optional password. No other aspect of the setup will be changed.
 
 ## Will it work?
 
