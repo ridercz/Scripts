@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "isRoot": true,
+  "tools": {
+    "altairis.tmd.compiler": {
+      "version": "2.5.0",
+      "commands": [
+        "tmdc"
+      ],
+      "rollForward": false
+    }
+  }
+}
