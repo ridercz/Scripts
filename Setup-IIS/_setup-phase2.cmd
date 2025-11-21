@@ -14,9 +14,6 @@ SET ROOT_FOLDER=C:\WWW-servers\LocalUser
 REM -- Set path to appcmd utility
 SET APPCMD=%SYSTEMROOT%\System32\inetsrv\appcmd.exe
 
-REM -- Delete webdeploy.msi downloaded by phase 1
-DEL webdeploy.msi
-
 REM -- Enable Web Management Service and remote access
 SC config wmsvc start=auto
 REG ADD HKLM\SOFTWARE\Microsoft\WebManagement\Server /v EnableRemoteManagement /t REG_DWORD /d 1 /f
