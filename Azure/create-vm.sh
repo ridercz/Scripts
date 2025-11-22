@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # Configuration
-SUFFIX=$(openssl rand -hex 5)
-RG_NAME=Test-$SUFFIX
-NSG_NAME=Test-$SUFFIX-NSG
+SUFFIX=$(openssl rand -hex 3)
+RG_NAME=DEV-$SUFFIX
+NSG_NAME=DEV-$SUFFIX-NSG
 REGION=EastUS
 SIZE=Standard_B2ms
-IMAGE=win2022datacenter
-VM_NAME=test$SUFFIX
+IMAGE=MicrosoftWindowsServer:WindowsServer:2025-datacenter-g2:latest
+VM_NAME=dev$SUFFIX
 USER_NAME=Developer
 USER_PASS=Pw1-$(openssl rand -base64 18 | sed "s|[+/]|x|g")
 
