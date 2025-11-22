@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Configuration
-SUFFIX=$(openssl rand -hex 3)
+SUFFIX=$(openssl rand -hex 2)
 RG_NAME=DEV-$SUFFIX
 NSG_NAME=DEV-$SUFFIX-NSG
 REGION=EastUS
