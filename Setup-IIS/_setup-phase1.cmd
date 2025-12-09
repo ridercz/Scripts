@@ -22,23 +22,20 @@ powershell Set-ExecutionPolicy RemoteSigned
 
 REM -- Install standard IIS components
 ECHO Installing web server...
-powershell Install-WindowsFeature -name Web-Server -IncludeManagementTools
-powershell Install-WindowsFeature -name Web-Request-Monitor    
-powershell Install-WindowsFeature -name Web-Http-Tracing       
-powershell Install-WindowsFeature -name Web-Dyn-Compression    
-powershell Install-WindowsFeature -name Web-CertProvider       
-powershell Install-WindowsFeature -name Web-IP-Security        
-powershell Install-WindowsFeature -name Web-Url-Auth           
-powershell Install-WindowsFeature -name Web-Net-Ext45          
-powershell Install-WindowsFeature -name Web-AppInit            
-powershell Install-WindowsFeature -name Web-Asp-Net45          
-powershell Install-WindowsFeature -name Web-WebSockets         
-powershell Install-WindowsFeature -name Web-Ftp-Server         
-powershell Install-WindowsFeature -name Web-Scripting-Tools    
-powershell Install-WindowsFeature -name Web-Mgmt-Service       
+powershell Install-WindowsFeature -name Web-Server, Web-Request-Monitor, Web-Http-Tracing, Web-Dyn-Compression, Web-CertProvider, Web-IP-Security, Web-Url-Auth, Web-Net-Ext45, Web-AppInit, Web-Asp-Net45, Web-WebSockets, Web-Ftp-Server, Web-Scripting-Tools, Web-Mgmt-Service -IncludeManagementTools      
 
 REM -- Install server packages via WinGet
-winget install 7zip.7zip Altap.Salamander Microsoft.WebDeploy Microsoft.Sysinternals.Suite Microsoft.DotNet.HostingBundle.8 Microsoft.DotNet.HostingBundle.9 Microsoft.DotNet.HostingBundle.10 NartacSoftwareInc.IISCryptoCLI
+winget install 7zip.7zip Altap.Salamander Microsoft.WebDeploy Microsoft.Sysinternals.Suite Microsoft.DotNet.HostingBundle.8 Microsoft.DotNet.HostingBundle.9 Microsoft.DotNet.HostingBundle.10 NartacSoftwareInc.IISCryptoCLI --accept-package-agreements --accept-source-agreements
+
+REM -- Install URL Rewrite Module and ARR
+ECHO Installing URL Rewrite Module...
+curl -o rewrite.msi https://download.microsoft.com/download/1/2/8/128E2E22-C1B9-44A4-BE2A-5859ED1D4592/rewrite_amd64_en-US.msi
+msiexec /i rewrite.msi /quiet
+del rewrite.msi
+ECHO Installing Application Request Routing...
+curl -o arr.msi https://download.microsoft.com/download/E/9/8/E9849D6A-020E-47E4-9FD0-A023E99B54EB/requestRouter_amd64.msi
+msiexec /i arr.msi /quiet
+del arr.msi
 
 REM -- Reboot computer after completing phase 1
 ECHO.
